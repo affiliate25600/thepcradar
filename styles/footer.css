@@ -1,0 +1,35 @@
+footer {
+    margin-top: 6rem;
+
+    min-height: 150px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 1rem 3rem;
+
+    background-color: var(--secondary-bg-colour);
+
+    img {
+        height: 5rem;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        a {
+            font-weight: 500;
+            text-decoration: none;
+
+            transition: opacity 0.25s;
+        }
+    }
+
+    a:hover {
+        opacity: 0.5;
+    }
+}

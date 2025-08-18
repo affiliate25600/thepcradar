@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    --primary-bg-colour: #ACD0E6;
+    --secondary-bg-colour: #8ACBF1;
+    --accent-colour: #33A1E0;
+    --primary-text-colour: #062B40;
+    --secondary-text-colour: #044b73;
+    --border-colour: #BCCCDC;
+
+    color: inherit;
+
+    font-family: "Poppins", Airal;
+}
+
+:root {
+    background-color: var(--primary-bg-colour);
+
+    color: var(--primary-text-colour);
+}
+
+body {
+    padding-top: 5.5rem;
+
+    background-image: url(/bg-img.png);
+}
+
+main {
+    min-height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    padding: 1rem;
+}
+
+b {
+    font-weight: 500;
+}
