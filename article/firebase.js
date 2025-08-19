@@ -24,11 +24,28 @@ const dbRef = ref(db);
 function productClick(productName) {
     get(child(dbRef, "/product-clicks/" + productName)).then((snapshot) => {
         if (snapshot.exists) {
-            set(ref(db, "product-clicks/" + productName), snapshot.val() + 1);
+            set(ref(db, "/product-clicks/" + productName), snapshot.val() + 1);
         } else {
-            set(ref(db, "product-clicks/" + productName), 1);
+            set(ref(db, "/product-clicks/" + productName), 1);
+        }
+    });
+}
+
+async function getArticleVote(article) {
+    const snapshot = await get(child(dbRef, "/article-vote/" + article));
+    return snapshot.exists() ? snapshot.val() : 0;
+}
+
+function changeArticleVote(article, change) {
+    get(child(dbRef, "/article-vote/" + article)).then((snapshot) => {
+        if (snapshot.exists) {
+            set(ref(db, "/article-vote/" + article), snapshot.val() + change);
+        } else {
+            set(ref(db, "/article-vote/" + article), change);
         }
     });
 }
 
 window.productClick = productClick;
+window.getArticleVote = getArticleVote;
+window.changeArticleVote = changeArticleVote;

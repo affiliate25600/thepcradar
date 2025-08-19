@@ -8,6 +8,8 @@
     --primary-text-colour: #062B40;
     --secondary-text-colour: #044b73;
     --border-colour: #BCCCDC;
+    --red-colour: rgb(239, 117, 117);
+    --green-colour: rgb(72, 206, 72);
 
     color: inherit;
 

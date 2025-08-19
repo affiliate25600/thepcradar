@@ -142,4 +142,59 @@
             translate: 0;
         }
     }
+
+    .conclusion {
+        margin-top: 3rem;
+
+        font-size: 1.25rem;
+    }
+
+    .vote-container {
+        margin-top: 5rem;
+
+        min-width: 200px;
+        width: 50%;
+        max-width: 500px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            color: var(--accent-colour);
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .vote-button-container {
+            display: flex;
+            flex-direction: column;
+
+            .vote-btn {
+                background-color: transparent;
+
+                border: none;
+
+                cursor: pointer;
+
+                svg {
+                    height: 3rem;
+
+                    fill: var(--accent-colour);
+                }
+
+                svg:hover {
+                    opacity: 0.5;
+                }
+            }
+
+            .vote-btn.active#upvote-btn svg {
+                fill: var(--green-colour);
+            }
+
+            .vote-btn.active#downvote-btn svg {
+                fill: var(--red-colour);
+            }
+        }
+    }
 }
