@@ -20,7 +20,7 @@ navbar.innerHTML = `
     </label>
 `;
 
-const d = new Date()
+const d = new Date();
 
 footer.innerHTML = `
     <div class="footer-links">
