@@ -36,6 +36,13 @@ article.items.forEach((item, idx) => {
     });
 
     itemEl.innerHTML = `
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9445635512536138" crossorigin="anonymous"></script>
+        <!-- Display horizontal responsive -->
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9445635512536138" data-ad-slot="1830852105" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
         <h2>${item.title}</h2>
         <div class="content">
             <div class="image">
