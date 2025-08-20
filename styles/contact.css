@@ -13,133 +13,131 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    .form-group {
+}
+form .form-group {
         margin-bottom: 1.5rem;
 
         width: 100%;
+}
+form .form-group h3 {
+    font-size: 1.5rem;
+}
 
-        h3 {
-            font-size: 1.5rem;
-        }
+form .form-group input {
+    width: 100%;
 
-        input {
-            width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--accent-colour);
 
-            border: none;
-            border-bottom: 1px solid var(--accent-colour);
+    background-color: transparent;
 
-            background-color: transparent;
+    outline: none;
+}
 
-            outline: none;
-        }
+form .form-group textarea {
+    min-height: 5rem;
+    max-height: 10rem;
 
-        textarea {
-            min-height: 5rem;
-            max-height: 10rem;
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
 
-            min-width: 100%;
-            width: 100%;
-            max-width: 100%;
+    padding: 0.5rem;
 
-            padding: 0.5rem;
+    border: 1px solid var(--accent-colour);
+    border-radius: 0.5rem;
 
-            border: 1px solid var(--accent-colour);
-            border-radius: 0.5rem;
+    background-color: transparent;
 
-            background-color: transparent;
+    outline: none;
 
-            outline: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-colour);
+}
 
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent-colour);
-        }
-    }
+form button {
+    position: relative;
 
-    button {
-        position: relative;
+    margin-top: 1rem;
 
-        margin-top: 1rem;
+    padding: 0.5rem 1.25rem;
 
-        padding: 0.5rem 1.25rem;
+    color: var(--accent-colour);
 
-        color: var(--accent-colour);
+    border: 2px solid var(--accent-colour);
+    border-radius: 0.5rem;
 
-        border: 2px solid var(--accent-colour);
-        border-radius: 0.5rem;
+    background-color: transparent;
 
-        background-color: transparent;
+    overflow: hidden;
 
-        overflow: hidden;
+    cursor: pointer;
 
-        cursor: pointer;
+    transition: color 0.25s;
+}
 
-        transition: color 0.25s;
-    }
+form button:hover {
+    color: white;
+}
 
-    button:hover {
-        color: white;
-    }
+form button::before {
+    content: "";
 
-    button::before {
-        content: "";
+    position: absolute;
+    inset: 0;
 
-        position: absolute;
-        inset: 0;
+    background-color: var(--accent-colour);
 
-        background-color: var(--accent-colour);
+    translate: 0 100%;
 
-        translate: 0 100%;
+    z-index: -1;
 
-        z-index: -1;
+    transition: translate 0.25s;
+}
 
-        transition: translate 0.25s;
-    }
+form button:hover::before {
+    translate: 0;
+}
 
-    button:hover::before {
-        translate: 0;
-    }
+form .loading {
+    position: relative;
 
-    .loading {
-        position: relative;
+    height: 1rem;
 
-        height: 1rem;
+    width: 50%;
 
-        width: 50%;
+    background-color: var(--secondary-bg-colour);
 
-        background-color: var(--secondary-bg-colour);
+    border-radius: 0.5rem;
 
-        border-radius: 0.5rem;
+    display: none;
 
-        display: none;
+    overflow: hidden;
+}
 
-        overflow: hidden;
-    }
+form .loading.active {
+    display: block;
+}
 
-    .loading.active {
-        display: block;
-    }
+form .loading::after {
+    content: "";
 
-    .loading::after {
-        content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 50%;
 
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 50%;
+    border-radius: 0;
 
-        border-radius: 0;
+    background-color: var(--accent-colour);
 
-        background-color: var(--accent-colour);
+    animation: loading 2s infinite ease-in-out;
+}
 
-        animation: loading 2s infinite ease-in-out;
-    }
-
-    .email-progress {
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-    }
+form .email-progress {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 @keyframes loading {

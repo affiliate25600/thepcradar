@@ -1,202 +1,200 @@
 .article {
     text-align: center;
+}
 
-    header {
+.article header {
         max-width: 65%;
+}
 
-        h1 {
-            font-size: 4em;
-        }
-
-        h3 {
-            color: var(--secondary-text-colour);
-
-            font-weight: 400;
-        }
-
-        p {
-            margin-top: 3em;
-
-            font-size: 1.25em;
-        }
+.article header h1 {
+        font-size: 4em;
     }
 
-    section {
-        margin-top: 6em;
+.article header h3 {
+    color: var(--secondary-text-colour);
 
-        max-width: 75%;
+    font-weight: 400;
+}
 
-        h2 {
-            margin-bottom: 2em;
+.article header p {
+    margin-top: 3em;
 
-            font-size: 3em;
-        }
+    font-size: 1.25em;
+}
 
-        .content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3em;
-            justify-content: center;
+.article section {
+    margin-top: 6em;
 
-            .image {
-                width: 450px;
+    max-width: 75%;
+}
 
-                display: flex;
-                flex-direction: column;
+.article section h2 {
+    margin-bottom: 2em;
 
-                img {
-                    width: 100%;
-                }
+    font-size: 3em;
+}
 
-                a {
-                    width: fit-content;
+.article section .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+    justify-content: center;
+}
 
-                    color: var(--secondary-text-colour);
+.article section .content .image {
+    width: 450px;
 
-                    text-align: left;
-                    text-decoration: none;
-                    font-weight: 500;
-                    font-size: 0.75em;
-                }
+    display: flex;
+    flex-direction: column;
+}
 
-                a:hover {
-                    text-decoration: underline;
-                }
-            }
+.article section .content .image img {
+    width: 100%;
+}
 
-            .info {
-                width: 450px;
+.article section .content .image a {
+    width: fit-content;
 
-                display: flex;
-                flex-direction: column;
-                gap: 1em;
+    color: var(--secondary-text-colour);
 
-                text-align: left;
+    text-align: left;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.75em;
+}
 
-                .info-section {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5em;
+.article section .content .image a:hover {
+    text-decoration: underline;
+}
 
-                    h4 {
-                        font-size: 1.25em;
-                    }
+.article section .content .info {
+    width: 450px;
 
-                    p {
-                        color: var(--secondary-text-colour);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 0.75em;
-                    }
+    text-align: left;
+}
+.article section .content .info .info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+.article section .content .info .info-section h4 {
+    font-size: 1.25em;
+}
 
-                    svg {
-                        height: 1em;
-                    }
-                }
-            }
-        }
+.article section .content .info .info-section p {
+    color: var(--secondary-text-colour);
 
-        button {
-            position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75em;
+}
 
-            margin-top: 2em;
+.article section .content .info .info-section p svg {
+    height: 1em;
+}
 
-            padding: 0.75em 1.25em;
+.article section button {
+    position: relative;
 
-            color: var(--accent-colour);
+    margin-top: 2em;
 
-            border: 2px solid var(--accent-colour);
-            border-radius: 0.5em;
+    padding: 0.75em 1.25em;
 
-            background-color: transparent;
+    color: var(--accent-colour);
 
-            overflow: hidden;
+    border: 2px solid var(--accent-colour);
+    border-radius: 0.5em;
 
-            cursor: pointer;
+    background-color: transparent;
 
-            transition: color 0.25s;
-        }
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: color 0.25s;
+}
 
 
-        button:hover {
-            color: white;
-        }
+.article section button:hover {
+    color: white;
+}
 
-        button::before {
-            content: "";
+.article section button::before {
+    content: "";
 
-            position: absolute;
-            inset: 0;
+    position: absolute;
+    inset: 0;
 
-            background-color: var(--accent-colour);
+    background-color: var(--accent-colour);
 
-            translate: 0 100%;
+    translate: 0 100%;
 
-            z-index: -1;
+    z-index: -1;
 
-            transition: translate 0.25s;
-        }
+    transition: translate 0.25s;
+}
 
-        button:hover::before {
-            translate: 0;
-        }
-    }
+.article section button:hover::before {
+    translate: 0;
+}
 
-    .conclusion {
-        margin-top: 3em;
+.article .conclusion {
+    margin-top: 3em;
 
-        font-size: 1.25em;
-    }
+    font-size: 1.25em;
+}
 
-    .vote-container {
-        margin-top: 5em;
+.article .vote-container {
+    margin-top: 5em;
 
-        min-width: 200px;
-        width: 50%;
-        max-width: 500px;
+    min-width: 200px;
+    width: 50%;
+    max-width: 500px;
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        p {
-            color: var(--accent-colour);
-            font-size: 1.5em;
-            font-weight: 500;
-        }
+.article .vote-container p {
+    color: var(--accent-colour);
+    font-size: 1.5em;
+    font-weight: 500;
+}
 
-        .vote-button-container {
-            display: flex;
-            flex-direction: column;
+.article .vote-container .vote-button-container {
+    display: flex;
+    flex-direction: column;
+}
 
-            .vote-btn {
-                background-color: transparent;
+.article .vote-container .vote-button-container .vote-btn {
+    background-color: transparent;
 
-                border: none;
+    border: none;
 
-                cursor: pointer;
+    cursor: pointer;
+}
 
-                svg {
-                    height: 3em;
+.article .vote-container .vote-button-container .vote-btn svg {
+    height: 3em;
 
-                    fill: var(--accent-colour);
-                }
+    fill: var(--accent-colour);
+}
 
-                svg:hover {
-                    opacity: 0.5;
-                }
-            }
+.article .vote-container .vote-button-container .vote-btn svg:hover {
+    opacity: 0.5;
+}
 
-            .vote-btn.active#upvote-btn svg {
-                fill: var(--green-colour);
-            }
+article .vote-container .vote-button-container .vote-btn.active#upvote-btn svg {
+    fill: var(--green-colour);
+}
 
-            .vote-btn.active#downvote-btn svg {
-                fill: var(--red-colour);
-            }
-        }
-    }
+article .vote-container .vote-button-container .vote-btn.active#downvote-btn svg {
+    fill: var(--red-colour);
 }
 
 @media (max-width: 550px) {
