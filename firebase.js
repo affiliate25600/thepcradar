@@ -21,6 +21,11 @@ const db = getDatabase();
 
 const dbRef = ref(db);
 
+async function getVotesForAllArticles() {
+    const snapshot = await get(child(dbRef, "/article-vote"));
+    return snapshot.val();
+};
+
 function productClick(productName) {
     get(child(dbRef, "/product-clicks/" + productName)).then((snapshot) => {
         if (snapshot.exists) {
@@ -46,6 +51,7 @@ function changeArticleVote(article, change) {
     });
 }
 
+window.getVotesForAllArticles = getVotesForAllArticles;
 window.productClick = productClick;
 window.getArticleVote = getArticleVote;
 window.changeArticleVote = changeArticleVote;

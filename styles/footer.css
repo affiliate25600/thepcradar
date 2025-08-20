@@ -12,10 +12,6 @@ footer {
 
     background-color: var(--secondary-bg-colour);
 
-    img {
-        height: 5rem;
-    }
-
     .footer-links {
         display: flex;
         flex-direction: column;
@@ -27,9 +23,13 @@ footer {
 
             transition: opacity 0.25s;
         }
+
+        a:hover {
+            opacity: 0.5;
+        }
     }
 
-    a:hover {
-        opacity: 0.5;
+    img {
+        height: 5rem;
     }
 }

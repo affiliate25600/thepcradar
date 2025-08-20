@@ -1,10 +1,12 @@
-const navbar = document.getElementById("navbar");
-const footer = document.getElementById("footer");
+// General
 
-navbar.innerHTML = `
+const navbarEl = document.getElementById("navbar");
+const footerEl = document.getElementById("footer");
+
+navbarEl.innerHTML = `
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <a class="logo" href="/">
-        <img src="/logo.png" alt="The PC Radar Logo">
+        <img src="/images/logo.png" alt="The PC Radar Logo">
     </a>
     <label class="nav-overlay" for="nav-toggle"></label>
     <div class="links">
@@ -22,12 +24,75 @@ navbar.innerHTML = `
 
 const d = new Date();
 
-footer.innerHTML = `
+footerEl.innerHTML = `
     <div class="footer-links">
         <a href="/about-us">About Us</a>
         <a href="/contact-us">Contact Us</a>
         <a href="/privacy-policy">Privacy Policy</a>
     </div>
-    <img src="/logo.png" alt="The PC Radar Logo">
+    <img src="/images/logo.png" alt="The PC Radar Logo">
     <p>&copy; The PC Radar ${d.getFullYear()}</p>
 `;
+
+// Popular
+
+const popularEl = document.getElementById("popular-container");
+
+if (popularEl) {
+    const articleCovers = {
+        1: {
+            url: "/article/2025/ssd",
+            cover: "https://i.pcmag.com/imagery/reviews/03kk6E0k70fNJMsd32dTInK-4.jpg",
+            title: "The Best SSD's Of 2025"
+        }
+    }
+
+    const articleNum = parseInt(popularEl.getAttribute("data-size"));
+
+    for (let i = 0; i < articleNum; i++) {
+        popularEl.innerHTML += `
+            <div class="popular-item">
+                <div class="loading-overlay"></div>
+                <div class="item-cover">
+                    <img>
+                </div>
+                <div class="featured-item-text-loading"></div>
+            </div>
+        `;
+    }
+
+    (async () => {
+        articleVotes = await getVotesForAllArticles();
+
+        const popularArticles = Object.entries(articleVotes) // convert to [key, value] pairs
+        .sort((a, b) => b[1] - a[1]) // sort descending by value
+        .slice(0, articleNum) // take top n entries
+        .map(entry => entry[0]);
+        
+        console.log(popularArticles);
+
+        popularEl.innerHTML = "";
+
+        popularArticles.forEach((item) => {
+            popularEl.append(createPopularItem(articleCovers[item]));
+        });
+    })();
+}
+
+function createPopularItem(articleData) {
+    console.log(articleData)
+    const articleEl = document.createElement("a");
+    
+    articleEl.classList.add("popular-item");
+
+    articleEl.setAttribute("href", articleData.url)
+
+    articleEl.innerHTML = `
+        <div class="item-cover">
+            <img src="${articleData.cover}">
+        </div>
+        <h3>${articleData.title}</h3>
+    `;
+
+    return articleEl;
+}

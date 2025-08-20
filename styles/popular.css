@@ -1,0 +1,117 @@
+.popular-container {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2em;
+
+    .popular-item {
+        position: relative;
+
+        aspect-ratio: 7 / 5;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+
+        padding: 1em;
+
+        background-color: var(--secondary-bg-colour);
+
+        border-radius: 1em;
+
+        text-decoration: none;
+
+        overflow: hidden;
+
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+
+            background-image: linear-gradient(135deg,rgba(0, 0, 0, 0) 0%, rgba(150, 150, 150, 0.5) 40%, rgba(255, 255, 255, 0.5) 50%, rgba(150, 150, 150, 0.5) 60%, rgba(0, 0, 0, 0) 100%);
+
+            background-size: 200% 100%;
+
+            animation: loading-item 5s infinite;
+        }
+
+        .item-cover {
+            width: 100%;
+            height: calc(100% - 2em - 1rem);
+
+            border-radius: 1em;
+
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+
+                object-fit: cover;
+
+                background-color: var(--primary-bg-colour);
+
+                transition: scale 0.25s;
+            }
+
+            img:hover {
+                scale: 1.1;
+            }
+        }
+
+        .featured-item-text-loading {
+            width: 100%;
+            height: 2em;
+
+            background-color: var(--primary-bg-colour);
+
+            border-radius: 1em;
+        }
+
+        h3 {
+            width: 100%;
+            height: 2em;
+
+            display: flex;
+            align-items: center;
+
+            font-size: 1rem;
+            text-wrap: nowrap;
+
+            overflow: hidden;
+        }
+    }
+}
+
+@keyframes loading-item {
+    from {
+        background-position: -6em 0;
+    }
+
+    50% {
+        background-position: -20em 0;
+    }
+
+    to {
+        background-position: -6em 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .popular-container {
+        font-size: 0.75rem;
+
+        grid-template-columns: 1fr 1fr;
+
+        .popular-item:nth-child(3) {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .popular-container {
+        font-size: 0.5rem;
+    }
+}

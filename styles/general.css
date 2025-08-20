@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
 
+    box-sizing: border-box;
+
     --primary-bg-colour: #ACD0E6;
     --secondary-bg-colour: #8ACBF1;
     --accent-colour: #33A1E0;
@@ -17,6 +19,8 @@
 }
 
 :root {
+    scrollbar-width: thin;
+
     background-color: var(--primary-bg-colour);
 
     color: var(--primary-text-colour);
@@ -35,7 +39,7 @@ main {
     flex-direction: column;
     align-items: center;
     
-    padding: 1rem;
+    padding: 3rem;
 }
 
 b {
