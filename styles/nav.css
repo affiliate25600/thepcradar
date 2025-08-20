@@ -15,79 +15,80 @@ nav {
 
     z-index: 999;
 }
-    .logo {
-        margin-right: auto;
 
-        display: inline-block;
-        height: 100%;
-    }
-        img {
-            height: 10px;
-        }
+nav .logo {
+    margin-right: auto;
 
-    .links {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-    }
-        .nav-x {
-            display: none;
+    display: inline-block;
+    height: 100%;
+}
 
-            margin-bottom: 2rem;
-        }
-            svg {
-                height: 2rem;
-            }
+nav .logo img {
+    height: 100%;
+}
 
-        a {
-            text-decoration: none;
+nav .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+nav .links .nav-x {
+    display: none;
 
-            font-size: 1rem;
+    margin-bottom: 2rem;
+}
+nav .links .nav-x svg {
+    height: 2rem;
+}
 
-            transition: opacity 0.25s;
-        }
+nav .links a {
+    text-decoration: none;
 
-        a:hover {
-            opacity: 0.5;
-        }
+    font-size: 1rem;
 
-    .nav-hamburger {
-        display: none;
-    }
-        svg {
-            height: 2rem;
-        }
+    transition: opacity 0.25s;
+}
 
-    .nav-toggle {
-        display: none;
-    }
+nav .links a:hover {
+    opacity: 0.5;
+}
 
-    .nav-toggle:checked ~ .nav-overlay {
-        opacity: 0.5;
-        pointer-events: all;
-    }
+nav .nav-hamburger {
+    display: none;
+}
+nav .nav-hamburger svg {
+    height: 2rem;
+}
 
-    .nav-toggle:checked ~ .links {
-        translate: 0 0;
-    }
+nav .nav-toggle {
+    display: none;
+}
+
+nav .nav-toggle:checked ~ .nav-overlay {
+    opacity: 0.5;
+    pointer-events: all;
+}
+
+nav .nav-toggle:checked ~ .links {
+    translate: 0 0;
+}
 
 @media (max-width: 768px) {
-    nav {
-        .nav-overlay {
-            position: fixed;
-            inset: 0;
+    nav .nav-overlay {
+        position: fixed;
+        inset: 0;
 
-            background-color: black;
+        background-color: black;
 
-            pointer-events: none;
+        pointer-events: none;
 
-            opacity: 0;
+        opacity: 0;
 
-            transition: opacity 0.25s;
-        }
+        transition: opacity 0.25s;
+    }
 
-        .links {
+    nav .links {
             position: fixed;
             top: 0;
             bottom: 0;
@@ -106,18 +107,16 @@ nav {
             background-color: var(--secondary-bg-colour);
 
             transition: translate 0.25s;
+    }
+    nav .links .nav-x {
+        display: block;
+    }
 
-            .nav-x {
-                display: block;
-            }
+    nav .links a {
+        font-size: 1.5rem;
+    }
 
-            a {
-                font-size: 1.5rem;
-            }
-        }
-
-        .nav-hamburger {
-            display: block;
-        }
+    nav .nav-hamburger {
+        display: block;
     }
 }
