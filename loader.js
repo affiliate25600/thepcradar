@@ -5,9 +5,9 @@ const footerEl = document.getElementById("footer");
 
 navbarEl.innerHTML = `
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <a class="logo" href="/">
+    <div class="logo" href="/">
         <img src="/images/logo.png" alt="The PC Radar Logo">
-    </a>
+    </div>
     <label class="nav-overlay" for="nav-toggle"></label>
     <div class="links">
         <label class="nav-x" for="nav-toggle">
