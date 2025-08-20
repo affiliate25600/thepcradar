@@ -3,7 +3,7 @@
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 2em;
+    gap: 2em;
 }
 
 .popular-container .popular-item {
@@ -101,17 +101,22 @@
 @media (max-width: 1200px) {
     .popular-container {
         font-size: 0.75rem;
-
-        grid-template-columns: 1fr 1fr;
-
-        .popular-item:nth-child(3) {
-            display: none;
-        }
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 900px) {
+    .popular-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .popular-container .popular-item:nth-child(3) {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
     .popular-container {
         font-size: 0.5rem;
+        grid-template-columns: 1fr;
     }
 }

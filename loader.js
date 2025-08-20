@@ -40,7 +40,7 @@ const popularEl = document.getElementById("popular-container");
 
 if (popularEl) {
     const articleCovers = {
-        1: {
+        "aaaaaa": {
             url: "/article/2025/ssd",
             cover: "https://i.pcmag.com/imagery/reviews/03kk6E0k70fNJMsd32dTInK-4.jpg",
             title: "The Best SSD's Of 2025"
@@ -62,14 +62,18 @@ if (popularEl) {
     }
 
     (async () => {
-        articleVotes = await getVotesForAllArticles();
+        let articleVotes = JSON.parse(sessionStorage.getItem("popular-articles"));
+
+        if (!articleVotes) {
+            articleVotes = await getVotesForAllArticles();
+
+            sessionStorage.setItem("popular-articles", JSON.stringify(articleVotes));
+        }
 
         const popularArticles = Object.entries(articleVotes) // convert to [key, value] pairs
         .sort((a, b) => b[1] - a[1]) // sort descending by value
         .slice(0, articleNum) // take top n entries
         .map(entry => entry[0]);
-        
-        console.log(popularArticles);
 
         popularEl.innerHTML = "";
 
@@ -80,7 +84,6 @@ if (popularEl) {
 }
 
 function createPopularItem(articleData) {
-    console.log(articleData)
     const articleEl = document.createElement("a");
     
     articleEl.classList.add("popular-item");

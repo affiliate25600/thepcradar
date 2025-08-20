@@ -3,12 +3,12 @@
 }
 
 .article header {
-        max-width: 65%;
+    max-width: 65%;
 }
 
 .article header h1 {
-        font-size: 4em;
-    }
+    font-size: 4em;
+}
 
 .article header h3 {
     color: var(--secondary-text-colour);

@@ -39,3 +39,9 @@ footer img {
         font-size: 0.75rem;
     }
 }
+
+@media (max-width: 450px) {
+    footer img {
+        display: none;
+    }
+}
