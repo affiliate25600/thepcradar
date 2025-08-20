@@ -14,33 +14,31 @@ nav {
     background-color: var(--secondary-bg-colour);
 
     z-index: 999;
-
+}
     .logo {
         margin-right: auto;
 
         display: inline-block;
         height: 100%;
-
+    }
         img {
             height: 10px;
         }
-    }
 
     .links {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
-
+    }
         .nav-x {
             display: none;
 
             margin-bottom: 2rem;
-
+        }
             svg {
                 height: 2rem;
             }
-        }
 
         a {
             text-decoration: none;
@@ -53,15 +51,13 @@ nav {
         a:hover {
             opacity: 0.5;
         }
-    }
 
     .nav-hamburger {
         display: none;
-
+    }
         svg {
             height: 2rem;
         }
-    }
 
     .nav-toggle {
         display: none;
@@ -75,7 +71,6 @@ nav {
     .nav-toggle:checked ~ .links {
         translate: 0 0;
     }
-}
 
 @media (max-width: 768px) {
     nav {
