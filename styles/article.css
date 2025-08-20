@@ -189,11 +189,11 @@
     opacity: 0.5;
 }
 
-article .vote-container .vote-button-container .vote-btn.active#upvote-btn svg {
+.article .vote-container .vote-button-container .vote-btn.active#upvote-btn svg {
     fill: var(--green-colour);
 }
 
-article .vote-container .vote-button-container .vote-btn.active#downvote-btn svg {
+.article .vote-container .vote-button-container .vote-btn.active#downvote-btn svg {
     fill: var(--red-colour);
 }
 
