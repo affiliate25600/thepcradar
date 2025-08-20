@@ -18,8 +18,12 @@ nav {
     .logo {
         margin-right: auto;
 
+        display: flex;          /* or inline-block */
+        align-items: center;    /* keeps image vertically aligned */
+        height: 100%;
+
         img {
-            height: 3.5rem;
+            height: 100%;
             width: auto;
         }
     }
