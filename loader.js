@@ -41,9 +41,9 @@ const popularEl = document.getElementById("popular-container");
 if (popularEl) {
     const articleCovers = {
         "aaaaaa": {
-            url: "/article/aaaaaa",
+            url: "/article/best-ssd-drives-for-pc-in-2025",
             cover: "https://i.pcmag.com/imagery/reviews/03kk6E0k70fNJMsd32dTInK-4.jpg",
-            title: "The Best Internal SSD's Of 2025"
+            title: "Best SSD Drives for PC in 2025"
         }
     }
 

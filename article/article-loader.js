@@ -9,8 +9,6 @@ const adEl = `
     </script>
 `;
 
-document.title = `${article.title} | The PC Radar`;
-
 container.innerHTML = `
     <header>
         <h1>${article.title}</h1>
