@@ -43,7 +43,7 @@ if (popularEl) {
         "aaaaaa": {
             url: "/article/2025/ssd",
             cover: "https://i.pcmag.com/imagery/reviews/03kk6E0k70fNJMsd32dTInK-4.jpg",
-            title: "The Best SSD's Of 2025"
+            title: "The Best Internal SSD's Of 2025"
         }
     }
 

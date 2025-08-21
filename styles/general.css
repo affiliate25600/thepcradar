@@ -60,4 +60,9 @@ b {
 
         font-size: 2.5rem;
     }
+
+    .popular-subtitle {
+        text-align: center;
+        margin: 0;
+    }
 }

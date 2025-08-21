@@ -1,9 +1,21 @@
+.popular-subtitle {
+    margin: 0 2rem;
+
+    font-size: 3rem;
+}
+
 .popular-container {
     width: 100%;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2em;
+
+    padding: 2rem;
+}
+
+main > .popular-container {
+    padding: unset;
 }
 
 .popular-container .popular-item {
