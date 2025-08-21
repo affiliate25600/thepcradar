@@ -121,7 +121,7 @@ main > .popular-container {
         grid-template-columns: 1fr 1fr;
     }
 
-    .popular-container .popular-item:nth-child(3) {
+    .popular-container .popular-item:nth-child(3n) {
         display: none;
     }
 }

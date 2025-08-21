@@ -41,7 +41,7 @@ const popularEl = document.getElementById("popular-container");
 if (popularEl) {
     const articleCovers = {
         "aaaaaa": {
-            url: "/article/2025/ssd",
+            url: "/article/aaaaaa",
             cover: "https://i.pcmag.com/imagery/reviews/03kk6E0k70fNJMsd32dTInK-4.jpg",
             title: "The Best Internal SSD's Of 2025"
         }
@@ -69,8 +69,20 @@ if (popularEl) {
 
             sessionStorage.setItem("popular-articles", JSON.stringify(articleVotes));
         }
+        
+        let filteredArticleVotes = articleVotes;
 
-        const popularArticles = Object.entries(articleVotes) // convert to [key, value] pairs
+        if (window.article) {
+            filteredArticleVotes = {};
+
+            for (const key in articleVotes) {
+                if (key !== article.id) {
+                        filteredArticleVotes[key] = articleVotes[key];
+                }
+            }
+        }
+
+        const popularArticles = Object.entries(filteredArticleVotes) // convert to [key, value] pairs
         .sort((a, b) => b[1] - a[1]) // sort descending by value
         .slice(0, articleNum) // take top n entries
         .map(entry => entry[0]);

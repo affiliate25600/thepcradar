@@ -90,6 +90,4 @@ container.innerHTML += `
             </button>
         </div>
     </div>
-
-    ${adEl}
 `;
