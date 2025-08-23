@@ -1,12 +1,12 @@
 // All articles
 
-const articleCovers = {
-    "aaaaaa": {
-        url: "/article/best-ssd-drives-for-pc-in-2025",
+const articleCovers = [
+    {
+        id: "best-ssd-drives-for-pc-in-2025",
         cover: "https://i.pcmag.com/imagery/reviews/03kk6E0k70fNJMsd32dTInK-4.jpg",
         title: "Best SSD Drives for PC in 2025"
     }
-}
+];
 
 // General
 
@@ -84,15 +84,19 @@ if (popularEl) {
             }
         }
 
-        const popularArticles = Object.entries(filteredArticleVotes) // convert to [key, value] pairs
-        .sort((a, b) => b[1] - a[1]) // sort descending by value
-        .slice(0, articleNum) // take top n entries
+        const popularArticles = Object.entries(filteredArticleVotes)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, articleNum)
         .map(entry => entry[0]);
 
         popularEl.innerHTML = "";
 
         popularArticles.forEach((item) => {
-            popularEl.append(createPopularItem(articleCovers[item]));
+            articleCovers.forEach((cover) => {
+                if (cover.id == item) {
+                    popularEl.append(createPopularItem(cover));
+                }
+            })
         });
     })();
 }
@@ -102,7 +106,7 @@ function createPopularItem(articleData) {
     
     articleEl.classList.add("popular-item");
 
-    articleEl.setAttribute("href", articleData.url)
+    articleEl.setAttribute("href", `/article/${articleData.id}`)
 
     articleEl.innerHTML = `
         <div class="item-cover">
