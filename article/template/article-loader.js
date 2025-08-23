@@ -1,6 +1,6 @@
 const articleEditorEl = document.getElementById("article-editor");
 
-let article = JSON.parse(localStorage.getItem("article")) || {
+let article = JSON.parse(localStorage.getItem("article-template")) || {
     url: "this-is-my-page-url",
     description: "",
     title: "",
@@ -41,7 +41,7 @@ setInterval(() => {
         items: getItems()
     };
 
-    localStorage.setItem("article", JSON.stringify(article))
+    localStorage.setItem("article-template", JSON.stringify(article))
 
     reloadArticle();
 }, 1000);
@@ -225,7 +225,8 @@ function urlElVal() {
     let val = articleUrlEl.value;
 
     val = val.toLowerCase()
-        .replace("https://thepcradar.com/article", "")
+        .replace("https:", "")
+        .replace("thepcradar.com", "")
         .replace(" ", "-")
         .replace("/", "")
         .replace(".", "")
