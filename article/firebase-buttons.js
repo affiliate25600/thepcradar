@@ -3,12 +3,12 @@ const upvoteBtnEl = document.getElementById("upvote-btn");
 const downvoteBtnEl = document.getElementById("downvote-btn");
 
 let articleVotes = 0;
-let vote = parseInt(localStorage.getItem(`article-${article.id}-vote`)) || 0;
+let vote = parseInt(localStorage.getItem(`article-${articleId}-vote`)) || 0;
 
 updateVoteBtns();
 
 (async () => {
-    articleVotes = await getArticleVote(article.id);
+    articleVotes = await getArticleVote(articleId);
     voteButtonCounterEl.innerText = articleVotes;
 })();
 

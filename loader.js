@@ -72,12 +72,12 @@ if (popularEl) {
         
         let filteredArticleVotes = articleVotes;
 
-        if (window.article) {
+        if (window.articleId) {
             filteredArticleVotes = {};
 
             for (const key in articleVotes) {
-                if (key !== article.id) {
-                        filteredArticleVotes[key] = articleVotes[key];
+                if (key != articleId) {
+                    filteredArticleVotes[key] = articleVotes[key];
                 }
             }
         }

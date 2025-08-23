@@ -1,0 +1,259 @@
+:root {
+    background-color: white;
+}
+
+aside {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    width: 35%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 1rem;
+
+    background-color: var(--primary-bg-colour);
+
+    overflow-y: scroll;
+
+    z-index: 99999;
+}
+
+aside .editor-group {
+    width: 100%;
+
+    padding: 0.75rem;
+    
+    background-color: var(--secondary-bg-colour);
+
+    border-radius: 0.5rem;
+}
+
+aside .editor-group h2 {
+    margin-bottom: 0.5rem;
+
+    font-size: 1.25rem;
+}
+
+aside .editor-group h2:has(~ span) {
+    margin: 0;
+}
+
+aside .editor-group span {
+    margin-bottom: 0.5rem;
+
+    font-size: 0.75rem;
+}
+
+aside .editor-group input {
+    width: 100%;
+
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--primary-text-colour);
+
+    outline: none;
+}
+
+aside .editor-group input:focus {
+    border-bottom: 1px solid white;
+}
+
+aside .editor-group textarea {
+    min-height: 5rem;
+
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+
+    padding: 0.5rem;
+
+    background-color: transparent;
+
+    border: 1px solid var(--primary-text-colour);
+    border-radius: 0.5rem;
+
+    outline: none;
+}
+
+aside .items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+aside .items-container .items-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+aside .items-container .items-title button {
+    aspect-ratio: 1;
+    height: 1.5rem;
+
+    background-color: transparent;
+
+    border: 1px solid var(--primary-text-colour);
+    border-radius: 0.25rem;
+
+    cursor: pointer;
+
+    transition: all 0.25s;
+}
+
+aside .items-container .items-title button:hover {
+    color: white;
+    border-color: white;
+}
+
+aside .items-container .items-title button:active {
+    opacity: 0.5;
+}
+
+aside .editor-group .item-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    padding: 0.75rem;
+
+    background-color: var(--primary-bg-colour);
+
+    border-radius: 0.5rem;
+}
+
+aside .editor-group .item-container .delete-btn {
+    height: 2rem;
+
+    width: unset;
+
+    background-color: transparent;
+    border: none;
+
+    cursor: pointer;
+}
+
+aside .editor-group .item-container .delete-btn svg {
+    height: 100%;
+}
+
+aside .editor-group .item-container h3 {
+    font-size: 1em;
+}
+
+aside .editor-group .item-container .editor-group .specs-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+aside .editor-group .item-container .editor-group .specs-title button {
+    aspect-ratio: 1;
+    height: 1.5rem;
+
+    background-color: transparent;
+
+    border: 1px solid var(--primary-text-colour);
+    border-radius: 0.25rem;
+
+    cursor: pointer;
+
+    transition: all 0.25s;
+}
+
+aside .editor-group .item-container .editor-group .specs-title button:hover {
+    color: white;
+    border-color: white;
+}
+
+aside .editor-group .item-container .editor-group .specs-title button:active {
+    opacity: 0.5;
+}
+
+aside .editor-group .item-container .item-specs-container {
+    margin-top: 0.75rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    padding: 0.75rem;
+
+    background-color: var(--primary-bg-colour);
+
+    border-radius: 0.5rem;
+}
+
+aside .editor-group .item-container .item-specs-container h4 {
+    font-size: 0.75rem;
+}
+
+aside .export-btn {
+    max-width: 100%;
+    
+    display: flex;
+    justify-content: center;
+
+    padding: 0.5rem 1.5rem;
+
+    background-color: var(--secondary-bg-colour);
+
+    border: none;
+    border-radius: 0.5rem;
+
+    cursor: pointer;
+
+    transition: all 0.5s;
+}
+
+aside .export-btn:hover {
+    color: white;
+
+    padding: 0.5rem 5rem;
+}
+
+.website-url {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    right: calc(2rem + 35%);
+    height: 3rem;
+
+    background-color: var(--secondary-bg-colour);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+    font-weight: 500;
+
+    box-shadow: 0 0 50px var(--primary-bg-colour);
+
+    overflow: hidden;
+}
+
+.website-preview {
+    position: absolute;
+    inset: 2rem;
+    top: 5rem;
+    right: calc(2rem + 35%);
+
+    box-sizing: unset;
+
+    background-color: var(--primary-bg-colour);
+
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+
+    box-shadow: 0 0 50px var(--secondary-bg-colour);
+
+    overflow: scroll;
+}
