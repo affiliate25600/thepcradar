@@ -1,3 +1,13 @@
+// All articles
+
+const articleCovers = {
+    "aaaaaa": {
+        url: "/article/best-ssd-drives-for-pc-in-2025",
+        cover: "https://i.pcmag.com/imagery/reviews/03kk6E0k70fNJMsd32dTInK-4.jpg",
+        title: "Best SSD Drives for PC in 2025"
+    }
+}
+
 // General
 
 const navbarEl = document.getElementById("navbar");
@@ -39,14 +49,6 @@ footerEl.innerHTML = `
 const popularEl = document.getElementById("popular-container");
 
 if (popularEl) {
-    const articleCovers = {
-        "aaaaaa": {
-            url: "/article/best-ssd-drives-for-pc-in-2025",
-            cover: "https://i.pcmag.com/imagery/reviews/03kk6E0k70fNJMsd32dTInK-4.jpg",
-            title: "Best SSD Drives for PC in 2025"
-        }
-    }
-
     const articleNum = parseInt(popularEl.getAttribute("data-size"));
 
     for (let i = 0; i < articleNum; i++) {

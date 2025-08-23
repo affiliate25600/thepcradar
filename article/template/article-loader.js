@@ -1,6 +1,6 @@
 const articleEditorEl = document.getElementById("article-editor");
 
-let article = {
+let article = JSON.parse(localStorage.getItem("article")) || {
     url: "this-is-my-page-url",
     description: "",
     title: "",
@@ -30,7 +30,7 @@ loadFromArticle();
 reloadArticle();
 
 setInterval(() => {
-    const updatedArticle = {
+    article = {
         url: valOfEl("article-url"),
         description: valOfEl("article-description"),
         title: valOfEl("article-title"),
@@ -41,7 +41,7 @@ setInterval(() => {
         items: getItems()
     };
 
-    article = JSON.parse(JSON.stringify(updatedArticle));
+    localStorage.setItem("article", JSON.stringify(article))
 
     reloadArticle();
 }, 1000);
@@ -112,7 +112,7 @@ function loadFromArticle() {
     articleEditorEl.innerHTML = `
         <div class="editor-group">
             <h2>Page URL</h2>
-            <input type="text" id="article-url" placeholder="URL..." autocomplete="off" spellcheck="false" value="${article.url}">
+            <input type="text" id="article-url" placeholder="URL..." autocomplete="off" oninput="urlElVal()" spellcheck="false" value="${article.url}">
         </div>
         <div class="editor-group">
             <h2>Page Description</h2>
@@ -146,22 +146,6 @@ function loadFromArticle() {
             </div>
         </div>
     `;
-
-    const articleUrlEl = document.getElementById("article-url");
-
-    articleUrlEl.addEventListener("input", (event) => {
-        let val = articleUrlEl.value;
-
-        val = val.replace("https://thepcradar.com", "");
-        val = val.replace(" ", "-");
-        val = val.replace("/", "");
-        val = val.replace(".", "");
-        val = val.replace("'", "");
-        val = val.replace('"', "");
-        val = val.toLowerCase();
-
-        articleUrlEl.value = val || "no-url";
-    });
 
     const itemsContainer = document.getElementById("items-container");
 
@@ -235,6 +219,22 @@ function loadFromArticle() {
     `;
 }
 
+function urlElVal() {
+    const articleUrlEl = document.getElementById("article-url");
+
+    let val = articleUrlEl.value;
+
+    val = val.toLowerCase()
+        .replace("https://thepcradar.com/article", "")
+        .replace(" ", "-")
+        .replace("/", "")
+        .replace(".", "")
+        .replace("'", "")
+        .replace('"', "");
+
+    articleUrlEl.value = val;
+}
+
 function setElVal(el, val) {
     document.getElementById(el).value = val;
 }
@@ -289,7 +289,7 @@ function reloadArticle() {
         </script>
     `;
 
-    document.getElementById("website-url").innerText = `thepcradar.com/${article.url}`;
+    document.getElementById("website-url").innerText = `thepcradar.com/article/${article.url || "no-url"}`;
 
     container.innerHTML = `
         <header>
@@ -375,8 +375,6 @@ function reloadArticle() {
 
 function exportWebsite() {
     articleEditorEl.innerHTML;
-
-    console.log(93741)
 
     const folderName = article.url;
 
