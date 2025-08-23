@@ -39,6 +39,7 @@
     flex-wrap: wrap;
     gap: 3em;
     justify-content: center;
+    align-items: center;
 }
 
 .article section .content .image {
@@ -144,6 +145,8 @@
 
 .article .conclusion {
     margin-top: 3em;
+
+    max-width: 65%;
 
     font-size: 1.25em;
 }

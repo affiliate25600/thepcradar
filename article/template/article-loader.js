@@ -117,7 +117,7 @@ function loadFromArticle() {
         <div class="editor-group">
             <h2>Page Description</h2>
             <span>This is the text below a link on a search engine</span>
-            <input type="text" id="article-description" placeholder="Description..." autocomplete="off" value="${article.description}">
+            <textarea id="article-description" placeholder="Description...">${article.description}</textarea>
         </div>
         <div class="editor-group">
             <h2>Title</h2>

@@ -3,7 +3,7 @@
 const articleCovers = [
     {
         id: "best-ssd-drives-for-pc-in-2025",
-        cover: "https://i.pcmag.com/imagery/reviews/03kk6E0k70fNJMsd32dTInK-4.jpg",
+        cover: "https://assetsio.gnwcdn.com/Crucial-T700-review.JPG?width=1200&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp",
         title: "Best SSD Drives for PC in 2025"
     }
 ];
