@@ -70,8 +70,8 @@ main > .popular-container {
     transition: scale 0.25s;
 }
 
-.popular-container .popular-item .item-cover img:hover {
-    scale: 1.1;
+.popular-container .popular-item:hover .item-cover img {
+    scale: 1.05;
 }
 
 .popular-container .popular-item .featured-item-text-loading {
@@ -94,6 +94,12 @@ main > .popular-container {
     text-wrap: nowrap;
 
     overflow: hidden;
+
+    transition: color 0.25s;
+}
+
+.popular-container .popular-item:hover h3 {
+    color: white;
 }
 
 @keyframes loading-item {
