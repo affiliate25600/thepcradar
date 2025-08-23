@@ -3,7 +3,6 @@
 const articleCovers = [
     {
         id: "best-ssd-drives-for-pc-in-2025",
-        cover: "https://assetsio.gnwcdn.com/Crucial-T700-review.JPG?width=1200&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp",
         title: "Best SSD Drives for PC in 2025"
     }
 ];
@@ -110,7 +109,7 @@ function createPopularItem(articleData) {
 
     articleEl.innerHTML = `
         <div class="item-cover">
-            <img src="${articleData.cover}">
+            <img src="/images/covers/${articleData.id}.png">
         </div>
         <h3>${articleData.title}</h3>
     `;
