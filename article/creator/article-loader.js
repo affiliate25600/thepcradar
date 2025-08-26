@@ -569,7 +569,7 @@ function exportProject() {
 
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `${article.url}.proj`;
+    link.download = `${article.projectName}.proj`;
 
     document.body.appendChild(link);
     link.click();
