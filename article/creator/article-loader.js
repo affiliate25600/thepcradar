@@ -1,6 +1,9 @@
 const articleEditorEl = document.getElementById("article-editor");
+const exportOptionsEl = document.getElementById("export-options");
+const loadOptionsEl = document.getElementById("load-options");
 
-let article = JSON.parse(localStorage.getItem("article-template")) || {
+const defaultProject = {
+    projectName: "New Project",
     url: "this-is-my-page-url",
     description: "",
     title: "",
@@ -25,12 +28,18 @@ let article = JSON.parse(localStorage.getItem("article-template")) || {
     ]
 };
 
+let allArticles = JSON.parse(localStorage.getItem("article-projects")) || {};
+let openArticle = parseInt(localStorage.getItem("open-project")) || createAritcleId();
+
+let article = allArticles[openArticle] || JSON.parse(JSON.stringify(defaultProject));
+
 loadFromArticle();
 
 reloadArticle();
 
 setInterval(() => {
     article = {
+        projectName: valOfEl("project-name"),
         url: valOfEl("article-url"),
         description: valOfEl("article-description"),
         title: valOfEl("article-title"),
@@ -40,11 +49,19 @@ setInterval(() => {
         conclusion: valOfEl("article-conclusion"),
         items: getItems()
     };
+    
+    allArticles[openArticle] = article;
+    localStorage.setItem("article-projects", JSON.stringify(allArticles));
+    localStorage.setItem("open-project", openArticle);
 
-    localStorage.setItem("article-template", JSON.stringify(article))
+    //localStorage.setItem(`article-template-${openArticle}`, JSON.stringify(article))
 
     reloadArticle();
 }, 1000);
+
+function createAritcleId() {
+    return Math.floor(Math.random() * 999999999);
+}
 
 function getFormattedDate() {
   const date = new Date();
@@ -110,6 +127,14 @@ function deleteSpec(itemId, specId) {
 
 function loadFromArticle() {
     articleEditorEl.innerHTML = `
+        <div class="project-options">
+            <button class="project-btn" onclick="openLoadOptions()">Load</button>
+            <button class="project-btn" onclick="openExportOptions()">Export</button>
+        </div>
+        <div class="editor-group">
+            <h2>Project Name</h2>
+            <input type="text" id="project-name" placeholder="Name..." autocomplete="off" value="${article.projectName}">
+        </div>
         <div class="editor-group">
             <h2>Page URL</h2>
             <input type="text" id="article-url" placeholder="URL..." autocomplete="off" oninput="urlElVal()" spellcheck="false" value="${article.url}">
@@ -213,10 +238,6 @@ function loadFromArticle() {
 
         itemsContainer.append(itemEl);
     });
-
-    articleEditorEl.innerHTML += `
-        <button class="export-btn" onclick="exportWebsite()">Export</button>
-    `;
 }
 
 function urlElVal() {
@@ -374,7 +395,192 @@ function reloadArticle() {
     `;
 }
 
-function exportWebsite() {
+const uploadOverlayEl = document.getElementById("upload-overlay");
+const uploadBoxEl = document.getElementById("upload-box");
+
+document.body.addEventListener("dragover", (event) => {event.preventDefault(); uploadOverlayEl.classList.add("active");});
+uploadBoxEl.addEventListener("dragleave", (event) => {event.preventDefault(); uploadOverlayEl.classList.remove("active");});
+uploadBoxEl.addEventListener("drop", handleFileDrop);
+uploadBoxEl.addEventListener("change", handleFile);
+
+function handleFile(event) {
+    event.preventDefault();
+
+    uploadOverlayEl.style.display = "none";
+    uploadOverlayEl.classList.remove("active");
+
+    const file = event.target.files[0];
+
+    readArticleFile(file, (err, obj) => {
+        if (err) {
+            console.error("Failed to read article file:", err);
+        } else {
+            createNewProject(obj);
+        }
+    });
+}
+
+function handleFileDrop(event) {
+    event.preventDefault();
+
+    uploadOverlayEl.classList.remove("active");
+
+    const file = event.dataTransfer.files[0];
+
+    const fileName = file.name.split(".");
+
+    if (fileName[fileName.length - 1] !== "proj") {
+        return;
+    }
+
+    readArticleFile(file, (err, obj) => {
+        if (err) {
+            console.error("Failed to read article file:", err);
+        } else {
+            createNewProject(obj);
+        }
+    });
+}
+
+function readArticleFile(file, callback) {
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        try {
+            // Get the Base64 text from file
+            const base64Data = event.target.result;
+
+            // Decode from Base64 back to JSON string
+            const jsonString = decodeURIComponent(escape(atob(base64Data)));
+
+            // Parse JSON back to object
+            const obj = JSON.parse(jsonString);
+
+            callback(null, obj);
+        } catch (err) {
+            callback(err, null);
+        }
+    };
+
+    reader.onerror = function() {
+        callback(reader.error, null);
+    };
+
+    // Read the file as text (since it's Base64 encoded)
+    reader.readAsText(file);
+}
+
+function createNewProject(articleObj = JSON.parse(JSON.stringify(defaultProject))) {
+    openArticle = createAritcleId();
+
+    article = articleObj;
+
+    allArticles[openArticle] = article;
+
+    loadFromArticle();
+
+    localStorage.setItem("article-projects", JSON.stringify(allArticles));
+
+    closeLoadOptions();
+}
+
+function openLoadOptions() {
+    const projectsContainer = document.getElementById("projects-container");
+
+    projectsContainer.innerHTML = `
+        <div class="project-btns">
+            <button class="project-btn" onclick="createNewProject()">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12H18M12 6V18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            </button>
+            <button class="project-btn" onclick="uploadBoxEl.click()">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 17H17.01M15.6 14H18C18.9319 14 19.3978 14 19.7654 14.1522C20.2554 14.3552 20.6448 14.7446 20.8478 15.2346C21 15.6022 21 16.0681 21 17C21 17.9319 21 18.3978 20.8478 18.7654C20.6448 19.2554 20.2554 19.6448 19.7654 19.8478C19.3978 20 18.9319 20 18 20H6C5.06812 20 4.60218 20 4.23463 19.8478C3.74458 19.6448 3.35523 19.2554 3.15224 18.7654C3 18.3978 3 17.9319 3 17C3 16.0681 3 15.6022 3.15224 15.2346C3.35523 14.7446 3.74458 14.3552 4.23463 14.1522C4.60218 14 5.06812 14 6 14H8.4M12 15V4M12 4L15 7M12 4L9 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            </button>
+        </div>
+    `;
+
+    for (const project in allArticles) {
+        const projectEl = document.createElement("div");
+        const projectOpenEl = document.createElement("button");
+
+        const projectObj = allArticles[project];
+
+        let openProject = "";
+
+        if (project === openArticle.toString()) openProject = "<span class='open-tag'>Open</span> ";
+
+        projectEl.className = "article-project";
+
+        projectEl.addEventListener("click", (event) => {
+            openArticle = project;
+            article = projectObj;
+
+            loadFromArticle();
+
+            loadOptionsEl.style.display = "none";
+        });
+
+        projectEl.innerHTML = `
+            <p>${openProject}${projectObj.projectName}</p>
+        `;
+
+        projectOpenEl.addEventListener("click", (event) => {
+            event.stopPropagation();
+
+            delete allArticles[project];
+
+            if (openArticle == project) {
+                createNewProject();
+            } else {
+                openLoadOptions();
+
+                localStorage.setItem("article-projects", JSON.stringify(allArticles));
+            }
+        });
+
+        projectOpenEl.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 12V17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M14 12V17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M4 7H20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+        `;
+
+        projectEl.append(projectOpenEl);
+
+        projectsContainer.append(projectEl);
+    }
+
+    loadOptionsEl.style.display = "flex";
+}
+
+function closeLoadOptions() {
+    loadOptionsEl.style.display = "none";
+}
+
+function openExportOptions() {
+    exportOptionsEl.style.display = "flex";
+}
+
+function closeExportOptions() {
+    exportOptionsEl.style.display = "none";
+}
+
+function exportProject() {
+    const jsonString = JSON.stringify(article);
+    const base64Data = btoa(unescape(encodeURIComponent(jsonString)));
+
+    const blob = new Blob([base64Data], { type: "application/octet-stream" });
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `${article.url}.proj`;
+
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+}
+
+function exportArticle() {
+    reloadArticle();
+
     articleEditorEl.innerHTML;
 
     const folderName = article.url;
