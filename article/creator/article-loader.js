@@ -371,11 +371,10 @@ function reloadArticle() {
                 </div>
             </div>
             <button onclick="productLink('${item.link}', '${item.name}')">GET IT NOW</button>
-
-            ${adEl}
         `;
 
         container.append(itemEl);
+        container.innerHTML += adEl;
     });
 
     container.innerHTML += `
